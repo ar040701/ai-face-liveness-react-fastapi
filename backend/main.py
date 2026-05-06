@@ -10,8 +10,12 @@ app = FastAPI(title="AI Face Liveness Detection API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173",
-        "https://ai-face-liveness-react-fastapi.vercel.app"], 
+    allow_origins=[
+        "http://localhost:5173",
+        "https://ai-face-liveness-react-fastapi.vercel.app",
+        "https://ai-face-liveness-react-fastapi-ft2nb41m5-ar040701s-projects.vercel.app",
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
