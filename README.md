@@ -2,7 +2,7 @@
 
 A real-time face liveness detection system built with **React**, **FastAPI**, **OpenCV**, **MediaPipe**, and **ONNX Runtime**.
 
-The app verifies whether a user is a real live person by combining face landmark detection, blink/head movement challenges, image quality checks, and an anti-spoofing model.
+The app verifies whether a user is a real live person by combining face landmark detection, blink/head movement challenges, and an anti-spoofing model.
 
 ## Live Demo
 
@@ -19,7 +19,6 @@ https://ai-face-liveness-react-fastapi-n3lfgmd0f-ar040701s-projects.vercel.app/
 - Blink detection using Eye Aspect Ratio
 - Head movement detection
 - Anti-spoofing using ONNX Runtime
-- Image quality checks for brightness and blur
 - React frontend and FastAPI backend
 
 ## Tech Stack
