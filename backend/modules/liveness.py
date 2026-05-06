@@ -25,6 +25,10 @@ class LivenessState:
 
         self.looked_left = False
         self.looked_right = False
+        
+        self.left_frame_count = 0
+        self.right_frame_count = 0
+        self.required_turn_frames = 2
 
         self.available_challenges = [
             "BLINK",
@@ -209,6 +213,9 @@ def build_common_response(
         "challenge_ok": challenge_ok,
         "challenge_warning": warning,
         "challenge_time_left": time_left,
+        "left_frame_count": state.left_frame_count,
+        "right_frame_count": state.right_frame_count,
+        "required_turn_frames": state.required_turn_frames,
     }
 
     if ear is not None:
@@ -305,9 +312,21 @@ def check_liveness(frame):
         state.blink_count += 1
 
     if head_direction == "LEFT":
+        state.left_frame_count += 1
+        state.right_frame_count = 0
+
+    elif head_direction == "RIGHT":
+        state.right_frame_count += 1
+        state.left_frame_count = 0
+
+    else:
+        state.left_frame_count = 0
+        state.right_frame_count = 0
+
+    if state.left_frame_count >= state.required_turn_frames:
         state.looked_left = True
 
-    if head_direction == "RIGHT":
+    if state.right_frame_count >= state.required_turn_frames:
         state.looked_right = True
 
     challenge_ok = check_current_challenge(

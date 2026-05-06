@@ -70,9 +70,9 @@ function App() {
         setLoading(true);
 
         const response = await fetch(`${API_BASE_URL}/verify-frame`, {
-          method: "POST",
-          body: formData,
-        });
+           method: "POST",
+           body: formData,
+          });
 
         const data = await response.json();
         setResult(data);
@@ -96,7 +96,7 @@ function App() {
 
     intervalRef.current = setInterval(() => {
       captureFrame();
-    }, 500);
+    }, 300);
   };
 
   const resetVerification = async () => {
